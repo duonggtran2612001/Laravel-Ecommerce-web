@@ -46,7 +46,7 @@ class User extends Authenticatable
 
     public function authenticate($username, $password)
     {
-        $user = self::where('name', $username)->first();
+        $user = self::where('username', $username)->first();
 
         if ($user && Hash::check($password, $user->password)) {
             return $user;
@@ -57,9 +57,7 @@ class User extends Authenticatable
     public function register($data)
     {
         $user = new self();
-
         $user->name = $data['name'];
-
         $user->password = $data['password'];
         $user->email = $data['email'];
         $user->address = $data['address'];

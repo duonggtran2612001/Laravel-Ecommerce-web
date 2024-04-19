@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 
 class AuthController extends Controller
@@ -25,7 +26,9 @@ class AuthController extends Controller
 		$user = (new User())->authenticate($request->username, $request->password);
 		if ($user) {
 			Auth::login($user);
-			return redirect()->intended(route('trangchu'));
+			$intendedUrl = session('url.intended', route('trangchu'));
+			Session::forget('url.intended');
+			return redirect()->to($intendedUrl);
 		} else {
 			return redirect()->route('dangnhap')->withInput()->withErrors(['error' => 'Username or password not correct']);
 		}
