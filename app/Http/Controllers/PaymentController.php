@@ -35,7 +35,7 @@ class PaymentController extends Controller
 	    $data['username'] = Auth::user()->username;
 	    $data['fullname'] = $request->fullname;
 	    $data['time'] = Carbon::now();	
-	    $data['total'] = Cart::total();
+	    $data['total'] = str_replace(',','',Cart::total());
 	    $data['amount'] = Cart::count();
 	    $data['phone'] = $request->phone;
 	    $data['address'] = $request->address;
@@ -47,14 +47,14 @@ class PaymentController extends Controller
             if(!$orderDetail){
 		return redirect()->route('thanhtoan')->withInput()->withErrors(['error'=>'Payment failed']);
 	    }else{
-		foreach (Cart::content() as $item) {
+		/*foreach (Cart::content() as $item) {
            	   $order->orderDetails()->create([
             		'product_id' => $item->id,
             		'quantity' => $item->qty,
             		'price' => $item->price
         	   ]);
     		}
-    		Cart::destroy();
+    		Cart::destroy();*/
 		return redirect()->intended(route('trangchu'));
 	    }
          }

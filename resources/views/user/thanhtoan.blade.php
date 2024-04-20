@@ -50,10 +50,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                           @foreach($cartItems as $items)
+                           @foreach($cartItems as $item)
                                 <tr>
                                     <td>{{ $item->name }} <strong>x <span> {{ $item->quantity }} </span></strong></td>
-                                    <td><strong>{{ Cart::displayPrice($item->subtotal()) }}</strong> </td>
+                                    <td><strong>{{ Cart::subtotal() }}</strong> </td>
                                 </tr>
 			   @endforeach
                         </tbody>

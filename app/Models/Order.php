@@ -21,6 +21,7 @@ class Order extends Model
     public $timestamps = false;
     public function saveOrder($data){
 	$order = new self();
+	$order->username = $data['username'];
 	$order->fullname = $data['fullname'];
 	$order->thoigiandathang = $data['time'];
 	$order->total = $data['total'];

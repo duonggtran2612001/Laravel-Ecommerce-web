@@ -19,9 +19,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+	'address',
     ];
 
     /**
@@ -57,7 +58,7 @@ class User extends Authenticatable
     public function register($data)
     {
         $user = new self();
-        $user->name = $data['name'];
+        $user->username = $data['name'];
         $user->password = $data['password'];
         $user->email = $data['email'];
         $user->address = $data['address'];
