@@ -74,209 +74,37 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $count = 0; ?>
+                        @foreach($loadsanphamadmin as $sanpham)
 
                         <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
+                            <td>{{$count++}}</td>
+                            <td><img src="{{asset('admin/images/'.$sanpham->hinhanh)}}" alt=""></td>
+                            <td>{{$sanpham->masanpham}}</td>
+                            <td><a href="#">{{$sanpham->tensanpham}}</a></td>
+                            <td><?php echo number_format($sanpham->dongia) ?> vnd</td>
+                            <td>{{$sanpham->soluong}}</td>
+                            <td>{{$sanpham->ten_danhmuc}}</td>
+                            <td>{{$sanpham->ngayphathanh}}</td>
+                            <td>{{$sanpham->nguoithem}}</td>
+                            <td><span>{{$sanpham->tinhtrang}}</span></td>
                             <td>
 
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="{{route("capnhatsanpham",['id'=>$sanpham->id])}}" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                                <!-- <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a> -->
 
 
                             </td>
                         </tr>
-
-                        
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
-
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
+                        @endforeach
 
 
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
-
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
 
 
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
-
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
 
 
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
 
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-
-
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
-
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-
-
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
-
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-
-
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
-
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-
-
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
-
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-
-
-                            </td>
-                        </tr>
-                        <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#123456</td>
-                            <td><a href="#">Ip1 10 pro</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>10</td>
-                            <td>Iphone</td>
-                            <td>10:10:2024</td>
-                            <td>admin</td>
-                            <td><span>Đang bán</span></td>
-                            <td>
-
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-
-
-                            </td>
-                        </tr>
 
 
 

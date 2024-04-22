@@ -60,7 +60,7 @@ class User extends Authenticatable
 
         $user->name = $data['name'];
 
-        $user->password = $data['password'];
+        $user->password = Hash::make($data['password']);
         $user->email = $data['email'];
         $user->address = $data['address'];
         $user->fullname = $data['fullname'];

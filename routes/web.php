@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SanPhamController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PaymentController;
@@ -46,9 +47,7 @@ Route::get('/admin/trangchu', function () {
     return view('admin.trangchu');
 });
 
-Route::get('/admin/danhsachsanpham', function () {
-    return view('admin/danhsachsanpham');
-});
+Route::get('/admin/danhsachsanpham', [SanPhamController::class, 'danhsachsanpham'])->name('danhsachsanpham');
 
 Route::get('/admin/themsanpham', function () {
     return view('admin/themsanpham');
@@ -60,10 +59,12 @@ Route::get('/admin/danhmucsanpham', [DanhMucController::class, 'loaddanhmuc'])->
 Route::get('/admin/capnhatdanhmucsanpham/{id}', [DanhMucController::class, 'capnhatdanhmucsanpham'])->name('capnhatdanhmucsanpham');
 Route::get('/admin/xulycapnhatdanhmucsanpham', [DanhMucController::class, 'xulycapnhatdanhmucsanpham'])->name('xulycapnhatdanhmucsanpham');
 
-Route::get('/admin/themdanhmuc', function () {
-    return view('admin/themdanhmuc');
-});
+Route::get('/admin/themsanpham', [SanPhamController::class, 'themsanpham'])->name('themsanpham');
+
 Route::get('/admin/xulythemdanhmucsanpham', [DanhMucController::class, 'themdanhmuc'])->name('xulythemdanhmucsanpham');
+Route::post('/admin/xulythemsanpham', [SanPhamController::class, 'xulythemsanpham'])->name('xulythemsanpham');
+
+Route::get('/admin/capnhatsanpham/{id}', [SanPhamController::class, 'capnhatsanpham'])->name('capnhatsanpham');
 Route::get('/admin/danhsachkhachhang', function () {
     return view('admin/danhsachkhachhang');
 });

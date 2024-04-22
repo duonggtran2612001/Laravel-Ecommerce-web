@@ -51,7 +51,7 @@ class AuthController extends Controller
 		$data['email'] = $request->email;
 		$data['address'] = $request->address;
 		$data['fullname'] = $request->fullname;
-		$data['password'] = Hash::make($request->password);
+		$data['password'] = $request->password;
 		$user = new User();
 		$registered = $user->register($data);
 		if (!$registered) {
