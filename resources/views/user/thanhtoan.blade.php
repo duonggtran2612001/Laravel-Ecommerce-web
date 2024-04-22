@@ -10,25 +10,25 @@
                 <h2>Thông tin khách hàng</h2>
 
                 <label for="">Họ và tên</label>
-                <input type="text" name="fullname" value="Trần Quang Đạo" placeholder="Họ và tên" id="">
+                <input type="text" name="fullname" value="{{ $user->fullname }}" placeholder="Họ và tên" id="">
              	@error('username')
                 	<div class="alert alert-danger">{{$message}}</div>
 		@enderror
 
                 <label for="">Email</label>
-                <input type="text" name="email" readonly="readonly" value="124@gmail.com " placeholder="Email" id="">
+                <input type="text" name="email" readonly="readonly" value="{{ $user->email }}" placeholder="Email" id="">
 		@error('email')
                 	<div class="alert alert-danger">{{$message}}</div>
 		@enderror
 
                 <label for="">Số điện thoại liên lạc</label>
-                <input type="text" name="phone" value="" placeholder="Số điện thoại" id="">
+                <input type="text" name="phone" value="{{ $user->phone }}" placeholder="Số điện thoại" id="">
 		@error('phone')
                 	<div class="alert alert-danger">{{$message}}</div>
 		@enderror
 
                 <label for="">Địa chỉ giao hàng</label>
-                <textarea name="address" placeholder="Địa chỉ giao hàng" id="" cols="30" rows="10">hóc môn</textarea>
+                <textarea name="address" placeholder="Địa chỉ giao hàng" id="" cols="30" rows="10"></textarea>
 		@error('address')
                 	<div class="alert alert-danger">{{$message}}</div>
 		@enderror
@@ -50,17 +50,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
+                           @foreach($cartItems as $item)
                                 <tr>
-                                    <td>IP 13 Promaxx <strong>x <span> 10 </span></strong></td>
-                                    <td><strong>200 000 000 vnđ</strong> </td>
+                                    <td>{{ $item->name }} <strong>x <span> {{ $item->quantity }} </span></strong></td>
+                                    <td><strong>{{ Cart::subtotal() }}</strong> </td>
                                 </tr>
-
+			   @endforeach
                         </tbody>
                         <tfoot>
                             <tr>
                                 <td>Tổng đơn hàng:</td>
-                                <td><strong>200 000 000 vnđ</strong></td>
+                                <td><strong>{{ Cart::total() }}</strong></td>
                             </tr>
                         </tfoot>
 

@@ -19,9 +19,10 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+	'address',
     ];
 
     /**
@@ -46,7 +47,7 @@ class User extends Authenticatable
 
     public function authenticate($username, $password)
     {
-        $user = self::where('name', $username)->first();
+        $user = self::where('username', $username)->first();
 
         if ($user && Hash::check($password, $user->password)) {
             return $user;
@@ -58,9 +59,8 @@ class User extends Authenticatable
     {
         $user = new self();
 
-        $user->name = $data['name'];
-
-        $user->password = Hash::make($data['password']);
+        $user->username = $data['name'];
+        $user->password = $data['password'];
         $user->email = $data['email'];
         $user->address = $data['address'];
         $user->fullname = $data['fullname'];
