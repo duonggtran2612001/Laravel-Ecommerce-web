@@ -9,14 +9,8 @@
         width: 50%;
     }
 </style>
-@if(session('ErrorLogin'))
-<div class="alert alert-success">
-    {{session('ErrorLogin')}}
-</div>
-@endif
 
 <div id="form">
-
     <div class="form-login">
         <h2>Xin chào,Đăng nhập tài khoản</h2>
         <form action="{{route('dangnhap.post')}}" id="btnlogin" method="POST">
@@ -37,7 +31,7 @@
         <div class="alert alert-danger">{{$errors->first('error')}}</div>
         @endif
     </div>
-
+</div>
 </div>
 
 @endsection

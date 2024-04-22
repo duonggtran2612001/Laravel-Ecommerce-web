@@ -12,16 +12,17 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
-    protected $table ="users";
+    protected $table = "users";
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
         'email',
         'password',
+	'address',
     ];
 
     /**
@@ -46,7 +47,7 @@ class User extends Authenticatable
 
     public function authenticate($username, $password)
     {
-        $user = self::where('name', $username)->first();
+        $user = self::where('username', $username)->first();
 
         if ($user && Hash::check($password, $user->password)) {
             return $user;
@@ -57,11 +58,11 @@ class User extends Authenticatable
     public function register($data)
     {
         $user = new self();
-        $user->name = $data['username'];
+        $user->username = $data['name'];
         $user->password = $data['password'];
         $user->email = $data['email'];
         $user->address = $data['address'];
-
-        return $user->save(); 
+        $user->fullname = $data['fullname'];
+        return $user->save();
     }
 }

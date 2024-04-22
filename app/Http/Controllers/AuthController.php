@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 
 class AuthController extends Controller
@@ -19,17 +20,18 @@ class AuthController extends Controller
 	public function dangnhapPost(Request $request)
 	{
 		$request->validate([
-			'name' => 'required',
-			'password' => 'required',
+			'username' => 'required',
+			'password' => 'required'
 		]);
-
-
-
-		$credentials = $request->only('name', 'password');
-		if (Auth::attempt($credentials)) {
-			return redirect()->intended(route('trangchu'));
+		$user = (new User())->authenticate($request->username, $request->password);
+		if ($user) {
+			Auth::login($user);
+			$intendedUrl = session('url.intended', route('trangchu'));
+			Session::forget('url.intended');
+			return redirect()->to($intendedUrl);
+		} else {
+			return redirect()->route('dangnhap')->withInput()->withErrors(['error' => 'Username or password not correct']);
 		}
-		return redirect(route('dangnhap'))->with("ErrorLogin", "Username or password not correct");
 	}
 
 	public function dangky()
@@ -43,19 +45,23 @@ class AuthController extends Controller
 			'username' => 'required',
 			'fullname' => 'required',
 			'email' => 'required|email|unique:users',
-			'password' => 'required',
-			're_password' => 'required',
+			'password' => 'required|min:6',
+			're_password' => 'required|same:password',
 			'address' => 'required',
 		]);
 
 		$data['name'] = $request->username;
 		$data['email'] = $request->email;
+		$data['address'] = $request->address;
+		$data['fullname'] = $request->fullname;
 		$data['password'] = Hash::make($request->password);
-		$user = User::create($data);
-		if (!$user) {
-			return redirect(route('dangky'))->with("error", "Registration failed, try again");
+		$user = new User();
+		$registered = $user->register($data);
+		if (!$registered) {
+			return redirect()->route('dangky')->withInput()->withErrors(['error' => 'Registration failed, please try again']);
+		} else {
+			return redirect(route('dangnhap'));
 		}
-		return redirect(route('dangnhap'))->with("success", "Registration success, please login");
 	}
 	public function dangxuat()
 	{
