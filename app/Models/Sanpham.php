@@ -23,4 +23,12 @@ class Sanpham extends Model
         $SanPham = SanPham::where('id', '=', $id)->get();
         return $SanPham;
     }
+    
+        public function LoadSanPhamByIdTheLoai($id)
+    {
+        
+        return Sanpham::where('id_theloai', '=', $id);
+        
+    }
+}
 }
