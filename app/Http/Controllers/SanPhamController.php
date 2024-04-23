@@ -81,4 +81,45 @@ class SanPhamController extends Controller
         // return $sanphambyid;
         return view("admin.capnhatsanpham", ['sanphambyid' => $sanphambyid, 'danhmuc' => $danhmuc, 'trangthai' => $trangthai]);
     }
+
+    public function xulycapnhatsanpham(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'price' => 'required',
+                // 'masanpham' => 'required|unique:sanpham',
+                'num' => 'required',
+                'desc' => 'required',
+                'content' => 'required',
+
+            ],
+            [
+                'required' => "không được bỏ trống :attribute",
+                // 'unique' => ":attribute đã tồn tại"
+            ],
+            [
+                'name' => 'tên sản phẩm',
+                'price' => 'giá sản phẩm',
+                // 'masanpham' => 'mã sản phẩm',
+                'num' => 'số lượng sản phẩm',
+                'desc' => 'mô tả sản phẩm',
+                'content' => 'chi tiết sản phẩm',
+                // 'image' => 'ảnh sản phẩm'
+            ]
+        );
+        $data['id']=$request->id;
+        $data['name'] = $request->name;
+        $data['price'] = $request->price;
+        $data['masanpham'] = $request->masanpham;
+        $data['num'] = $request->num;
+        $data['desc'] = $request->desc;
+        $data['content'] = $request->content;
+        $data['danhmuc'] = $request->category;
+        $data['trangthai'] = $request->status;
+        if ($this->sanpham->capnhatsanpham($data)) {
+            return redirect(route('danhsachsanpham'));
+        }
+        return  redirect(route('themsanpham'));
+    }
 }

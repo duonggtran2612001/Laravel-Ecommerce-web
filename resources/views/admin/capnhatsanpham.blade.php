@@ -7,9 +7,11 @@
                 Cập nhật sản phẩm
             </div>
             <div class="card-body">
-                <form action="{{route('xulythemsanpham')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('xulycapnhatsanpham')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
+                    <input class="form-control" value="{{$sanphambyid[0]->id}}" type="text" name="id" id="name" hidden>
+
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="name">Tên sản phẩm</label>
@@ -27,7 +29,7 @@
                             @enderror
                             <div class="form-group">
                                 <label for="code">Mã sản phẩm</label>
-                                <input class="form-control" type="text" value="{{$sanphambyid[0]->tensanpham}}" name="masanpham" id="name">
+                                <input class="form-control" type="text" value="{{$sanphambyid[0]->masanpham}}" name="masanpham" id="name" readonly>
                             </div>
                             @error('masanpham')
                             <div style="margin:0px auto" class="alert alert-danger">{{$message}}</div>
@@ -44,14 +46,14 @@
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="intro">Mô tả sản phẩm</label>
-                                <textarea name="desc" class="ckeditor form-control" id="intro" cols="30" rows="12">{{$sanphambyid[0]->tensanpham}}</textarea>
+                                <textarea name="desc" class="ckeditor form-control" id="intro" cols="30" rows="12">{{$sanphambyid[0]->motangan}}</textarea>
                             </div>
                             @error('desc')
                             <div style="margin:0px auto" class="alert alert-danger">{{$message}}</div>
                             @enderror
                             <div class="form-group">
                                 <label for="intro">Chi tiết sản phẩm</label>
-                                <textarea name="content" class="ckeditor form-control" id="intro" cols="30" rows="5">{{$sanphambyid[0]->tensanpham}}</textarea>
+                                <textarea name="content" class="ckeditor form-control" id="intro" cols="30" rows="5">{{$sanphambyid[0]->chitietsanpham}}</textarea>
                             </div>
                             @error('content')
                             <div style="margin:0px auto" class="alert alert-danger">{{$message}}</div>
@@ -91,7 +93,7 @@
 
 
 
-                    <input type="submit" name="btn-add-product" class="btn btn-primary" value="Thêm sản phẩm">
+                    <input type="submit" name="btn-add-product" class="btn btn-primary" value="Cập nhật sản phẩm">
                 </form>
             </div>
         </div>

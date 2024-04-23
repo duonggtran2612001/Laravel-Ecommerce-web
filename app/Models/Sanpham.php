@@ -37,4 +37,12 @@ class Sanpham extends Model
     {
         return  $trangthai = DB::table('trangthaisanpham')->select("*")->get();
     }
+    function capnhatsanpham($data)
+    {
+        $db = DB::table('sanpham')->where('masanpham', $data['masanpham'])->update(['tensanpham' => $data['name'], 'soluong' => $data['num'], 'dongia' => $data['price'], 'motangan' => $data['desc'], 'chitietsanpham' => $data['content'], 'tinhtrang' => $data['trangthai'], 'id_danhmuc' => $data['danhmuc']]);
+        if ($db) {
+            return redirect()->route('danhsachsanpham')->with('success', 'Đã cập nhật danh mục thành công');
+        }
+        return redirect()->route('capnhatsanpham', ['id' => $data['id']])->with('error', 'thêm thất bại');
+    }
 }

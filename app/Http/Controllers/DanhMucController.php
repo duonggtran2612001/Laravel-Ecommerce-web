@@ -20,7 +20,7 @@ class DanhMucController extends Controller
         return view("admin.danhmuc")->with("tendanhmuc", $dsdanhmuc);
     }
 
-    public function themdanhmuc(Request $request)
+    public function xulythemdanhmuc(Request $request)
     {
         $request->validate(
             ['name_category' => 'required'],
@@ -29,6 +29,9 @@ class DanhMucController extends Controller
         );
         $ten_danhmuc = $request->name_category;
         return $this->danhmuc->themdanhmuc($ten_danhmuc);
+    }
+    public function themdanhmucsanpham(){
+        return view("admin.themdanhmuc");
     }
     public function capnhatdanhmucsanpham($id){
         $danhmuc=$this->danhmuc->getdanhmuc($id);

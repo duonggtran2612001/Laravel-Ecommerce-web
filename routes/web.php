@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DonhangController;
 use App\Http\Controllers\SanPhamController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -42,10 +43,7 @@ Route::get('/capnhatgiohang', [CartController::class, 'capnhatgiohang'])->name('
 Route::get('/thanhtoan', [PaymentController::class, 'thanhtoan'])->name('thanhtoan');
 Route::post('/thanhtoan', [PaymentController::class, 'thanhtoanPost'])->name('thanhtoan.post');
 
-Route::get('/admin/trangchu', function () {
 
-    return view('admin.trangchu');
-});
 
 Route::get('/admin/danhsachsanpham', [SanPhamController::class, 'danhsachsanpham'])->name('danhsachsanpham');
 
@@ -61,8 +59,13 @@ Route::get('/admin/xulycapnhatdanhmucsanpham', [DanhMucController::class, 'xulyc
 
 Route::get('/admin/themsanpham', [SanPhamController::class, 'themsanpham'])->name('themsanpham');
 
-Route::get('/admin/xulythemdanhmucsanpham', [DanhMucController::class, 'themdanhmuc'])->name('xulythemdanhmucsanpham');
+Route::get('/admin/xulythemdanhmucsanpham', [DanhMucController::class, 'xulythemdanhmuc'])->name('xulythemdanhmucsanpham');
+
+Route::get('/admin/themdanhmucsanpham', [DanhMucController::class, 'themdanhmucsanpham'])->name('themdanhmucsanpham');
+
 Route::post('/admin/xulythemsanpham', [SanPhamController::class, 'xulythemsanpham'])->name('xulythemsanpham');
+Route::post('/admin/xulycapnhatsanpham', [SanPhamController::class, 'xulycapnhatsanpham'])->name('xulycapnhatsanpham');
+
 
 Route::get('/admin/capnhatsanpham/{id}', [SanPhamController::class, 'capnhatsanpham'])->name('capnhatsanpham');
 Route::get('/admin/danhsachkhachhang', function () {
@@ -75,3 +78,16 @@ Route::get('/admin/thongtincanhan', function () {
 Route::get('/admin/capnhatdonhang', function () {
     return view('/admin/capnhatdonhang');
 });
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect(route('trangchu'));
+})->name('logout');
+
+
+
+// đơn hàng
+Route::get('/admin/donhang', [DonhangController::class, 'donhang'])->name('donhang');
+Route::get('/admin/capnhatdonhang/{id}', [DonhangController::class, 'capnhatdonhang'])->name('capnhatdonhang');
+Route::post('/admin/xulycapnhatdonhang', [DonhangController::class, 'xulycapnhatdonhang'])->name('xulycapnhatdonhang');
+Route::get('/admin/lichsudonhang', [DonhangController::class, 'lichsudonhang'])->name('lichsudonhang');

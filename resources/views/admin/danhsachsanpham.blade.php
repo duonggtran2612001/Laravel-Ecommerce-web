@@ -39,7 +39,7 @@
 <div id="wp-content">
     <div id="content" class="container-fluid">
         <div class="card">
-            <div class="card-header font-weight-bold d-flex justify-content-between align-items-center">
+            <!-- <div class="card-header font-weight-bold d-flex justify-content-between align-items-center">
                 <h5 class="m-0 ">Danh sách sản phẩm</h5>
                 <div class="form-search form-inline">
                     <form action="" style="display: flex;" method="GET">
@@ -47,7 +47,7 @@
                         <input type="submit" name="btn-search" value="Tìm kiếm" class="btn btn-primary">
                     </form>
                 </div>
-            </div>
+            </div> -->
             <div class="card-body">
 
 

@@ -136,20 +136,43 @@
                     </div>
 
 
-                    <div class="gointo">
-                        <div class="user">
-                            <i class="fa-solid fa-user"></i>
-                        </div>
-                        <div class="form">
-                            <span>Đăng nhập /</span><span> Đăng ký</span>
-                            <br />
-                            <input type="submit" value="Tài khoản"> <i class="fa-solid fa-caret-down"></i>
-                            <div class="choose-form">
-                                <a href="dangnhap">Đăng nhập</a>
-                                <a href="dangky">Đăng ký</a>
+
+                    <?php
+                    if (Auth::check()) {
+                    ?>
+                        <div class="gointo">
+
+                            <div class="form">
+                                <span>{{ Auth::user()->name}}</span>
+                                <br />
+                                <!-- <input type="submit" value="Tài khoản"> <i class="fa-solid fa-caret-down"></i> -->
+                                <div class="choose-form" style="right: -170px;height:60px">
+                                    <a href="{{route('logout')}}">Đăng xuất</a>
+                                    <a href="{{route('lichsudonhang')}}">Lịch sử đơn hàng</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    <?php
+                    } else {
+                    ?>
+                        <div class="gointo">
+                            <div class="user">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div class="form">
+                                <span>Đăng nhập /</span><span> Đăng ký</span>
+                                <br />
+                                <input type="submit" value="Tài khoản"> <i class="fa-solid fa-caret-down"></i>
+                                <div class="choose-form">
+                                    <a href="dangnhap">Đăng nhập</a>
+                                    <a href="dangky">Đăng ký</a>
+                                </div>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
 
                     <div class="cart">
                         <span></span>

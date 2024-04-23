@@ -42,7 +42,7 @@
         <div id="sidebar" class="bg-white">
             <ul id="sidebar-menu">
                 <li class="nav-link">
-                    <a href="trangchu">
+                    <a href="{{route('donhang')}}">
                         <div class="nav-link-icon d-inline-flex">
                             <i class="far fa-folder"></i>
                         </div>
@@ -62,7 +62,7 @@
                     <ul class="sub-menu">
                         <li><a href="themsanpham">Thêm mới</a></li>
                         <li><a href="{{route('loaddanhmuc')}}">Danh mục</a></li>
-                        <li><a href="themdanhmuc">Thêm danh mục sản phẩm</a></li>
+                        <li><a href="{{route('themdanhmucsanpham')}}">Thêm danh mục sản phẩm</a></li>
 
                     </ul>
                 </li>

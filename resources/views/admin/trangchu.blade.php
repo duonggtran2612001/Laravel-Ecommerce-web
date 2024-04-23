@@ -22,23 +22,24 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        <?php $i = 0 ?>
+                        @foreach($dsdonhang as $item)
                         <tr>
-                            <th scope="row">0</th>
-                            <td>ĐH6</td>
+                            <th scope="row">{{$i++}}</th>
+                            <td>DH{{$item->id}}</td>
                             <td>
-                                Trần Quang Đạo
+                                {{$item->hovaten}}
                             </td>
-                            <td>0961256443</td>
-                            <td>15.000.000 VNĐ</td>
-                            <td>10</td>
-                            <td> 2022-04-18 00:00:00</td>
-                            <td><span class="badge badge-warning">Đã hoàn thành</span></td>
-                            <td> <a href="capnhatdonhang" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                            <td>{{$item->lienlac}}</td>
+                            <td><?php echo number_format($item->tongtien) ?> vnd</td>
+                            <td>{{$item->soluongdonhang}}</td>
+                            <td>{{$item->thoigiandathang}}</td>
+                            <td><span class="badge badge-warning">{{$item->ten_trangthai}}</span></td>
+                            <td> <a href="{{route('capnhatdonhang',['id'=>$item->id])}}" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
                             </td>
                         </tr>
-
+                        @endforeach
 
                     </tbody>
                 </table>

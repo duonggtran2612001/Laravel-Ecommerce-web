@@ -42,36 +42,52 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $count = 0;
+                        // $trangthai = "" 
+                        ?>
+                        @foreach($chitietdh as $item)
 
                         <tr class="">
-                            <td>1</td>
-                            <td><img src="https://vtv1.mediacdn.vn/2019/10/10/photo-1-15706463929181755249740.jpg" alt=""></td>
-                            <td>#234567</td>
-                            <td><a href="#">Ip 12 pro max</a></td>
-                            <td>10 000 000 vnđ</td>
-                            <td>20</td>
-                            <td>200 000 000 vnd</td>
+                            <td>{{$count++}}</td>
+                            <td><img src="{{asset('admin/images/'.$item->hinhanh)}}" alt=""></td>
+                            <td>{{$item->masanpham}}</td>
+                            <td><a href="#">{{$item->tensanpham}}</a></td>
+                            <td><?php echo number_format($item->dongia) ?> vnd</td>
+                            <td>{{$item->sl}}</td>
+                            <td><?php echo number_format($item->sl * $item->dongia) ?> vnd</td>
                         </tr>
 
 
-
+                        @endforeach
 
 
                     </tbody>
                 </table>
-                <form action="" method="POST">
+                <form action="{{route('xulycapnhatdonhang')}}" method="POST">
+                    @csrf
+                    <input type="text" name="id" value="{{$dh[0]->id}}" hidden id="">
                     <label class="form-control" for="">Địa chỉ giao hàng</label>
-                    <textarea name="address" id="" cols="20" class="form-control" rows="4">viettel</textarea>
+                    <textarea name="address" id="" cols="20" class="form-control" rows="4">{{$dh[0]->diachigiaohang}}</textarea>
+                    @error('address')
+                    <div style="margin:0px auto" class="alert alert-danger">{{$message}}</div>
+                    @enderror
                     <label class="form-control" for="">Ghi chú</label>
-                    <textarea name="notes" id="" cols="20" class="form-control" rows="4">Giao gấp</textarea>
+                    <textarea name="notes" id="" cols="20" class="form-control" rows="4">{{$dh[0]->ghichu}}</textarea>
+                    @error('notes')
+                    <div style="margin:0px auto" class="alert alert-danger">{{$message}}</div>
+                    @enderror
                     <select name="trangthai" class="form-control" style="margin: 10px 0px;" id="">
-
-                        <option value="">Đã hoàn thành</option>
-                        <option value="">Đang xử lý</option>
+                        @foreach($trangthaidonhang as $tt)
+                        <option <?php
+                                if ($tt->id_trangthai == $dh[0]->trangthai) {
+                                    echo "selected='selected'";
+                                }
+                                ?> value="{{$tt->id_trangthai}}">{{$tt->ten_trangthai}}</option>
+                        @endforeach
                     </select>
-
-                    <button type="submit" name="btn-add-category" class="btn btn-primary">Cập nhật đơn hàng</button>
-
+                    @if($dh[0]->trangthai == 0)
+                    <button type="submit" name="update_order" class="btn btn-primary">Cập nhật đơn hàng</button>
+                    @endif
                 </form>
 
             </div>
