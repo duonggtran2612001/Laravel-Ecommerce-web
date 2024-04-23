@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sanpham;
+use Illuminate\Support\Facades\Auth;
 
 class TrangChuController extends Controller
 {
@@ -16,6 +17,7 @@ class TrangChuController extends Controller
     public function trangchu()
     {
 
+        
         $SanPhamTrangChu = $this->sanpham->LoadSanPhamTrangChu();
         return view("user.trangchu")->with("SanPhamTrangChu", $SanPhamTrangChu);
     }

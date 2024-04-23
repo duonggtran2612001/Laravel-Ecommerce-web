@@ -146,9 +146,16 @@
                                 <span>{{ Auth::user()->name}}</span>
                                 <br />
                                 <!-- <input type="submit" value="Tài khoản"> <i class="fa-solid fa-caret-down"></i> -->
-                                <div class="choose-form" style="right: -170px;height:60px">
+                                <div class="choose-form" style="right: -170px;height:200px">
                                     <a href="{{route('logout')}}">Đăng xuất</a>
                                     <a href="{{route('lichsudonhang')}}">Lịch sử đơn hàng</a>
+                                    <?php
+                                    if (Auth::user()->role == 0) {
+                                    ?>
+                                        <a href="{{route('donhang')}}">Admin</a>
+                                    <?php
+                                    }
+                                    ?>
                                 </div>
                             </div>
                         </div>

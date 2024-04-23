@@ -45,39 +45,10 @@ Route::post('/thanhtoan', [PaymentController::class, 'thanhtoanPost'])->name('th
 
 
 
-Route::get('/admin/danhsachsanpham', [SanPhamController::class, 'danhsachsanpham'])->name('danhsachsanpham');
-
-Route::get('/admin/themsanpham', function () {
-    return view('admin/themsanpham');
-});
 
 
-Route::get('/admin/danhmucsanpham', [DanhMucController::class, 'loaddanhmuc'])->name('loaddanhmuc');
-
-Route::get('/admin/capnhatdanhmucsanpham/{id}', [DanhMucController::class, 'capnhatdanhmucsanpham'])->name('capnhatdanhmucsanpham');
-Route::get('/admin/xulycapnhatdanhmucsanpham', [DanhMucController::class, 'xulycapnhatdanhmucsanpham'])->name('xulycapnhatdanhmucsanpham');
-
-Route::get('/admin/themsanpham', [SanPhamController::class, 'themsanpham'])->name('themsanpham');
-
-Route::get('/admin/xulythemdanhmucsanpham', [DanhMucController::class, 'xulythemdanhmuc'])->name('xulythemdanhmucsanpham');
-
-Route::get('/admin/themdanhmucsanpham', [DanhMucController::class, 'themdanhmucsanpham'])->name('themdanhmucsanpham');
-
-Route::post('/admin/xulythemsanpham', [SanPhamController::class, 'xulythemsanpham'])->name('xulythemsanpham');
-Route::post('/admin/xulycapnhatsanpham', [SanPhamController::class, 'xulycapnhatsanpham'])->name('xulycapnhatsanpham');
 
 
-Route::get('/admin/capnhatsanpham/{id}', [SanPhamController::class, 'capnhatsanpham'])->name('capnhatsanpham');
-Route::get('/admin/danhsachkhachhang', function () {
-    return view('admin/danhsachkhachhang');
-});
-
-Route::get('/admin/thongtincanhan', function () {
-    return view('admin/thongtincanhan');
-});
-Route::get('/admin/capnhatdonhang', function () {
-    return view('/admin/capnhatdonhang');
-});
 
 Route::get('/logout', function () {
     Auth::logout();
@@ -86,8 +57,45 @@ Route::get('/logout', function () {
 
 
 
-// đơn hàng
-Route::get('/admin/donhang', [DonhangController::class, 'donhang'])->name('donhang');
-Route::get('/admin/capnhatdonhang/{id}', [DonhangController::class, 'capnhatdonhang'])->name('capnhatdonhang');
-Route::post('/admin/xulycapnhatdonhang', [DonhangController::class, 'xulycapnhatdonhang'])->name('xulycapnhatdonhang');
-Route::get('/admin/lichsudonhang', [DonhangController::class, 'lichsudonhang'])->name('lichsudonhang');
+
+// Route::get('/trangchu/lichsudonhang', [DonhangController::class, 'lichsudonhang'])->name('lichsudonhang');
+
+
+Route::middleware('checklogin')->group(function () {
+    Route::get('/trangchu/lichsudonhang', [DonhangController::class, 'lichsudonhang'])->name('lichsudonhang');
+    Route::get('/admin/danhsachsanpham', [SanPhamController::class, 'danhsachsanpham'])->name('danhsachsanpham');
+
+    Route::get('/admin/themsanpham', function () {
+        return view('admin/themsanpham');
+    });
+    Route::get('/admin/danhmucsanpham', [DanhMucController::class, 'loaddanhmuc'])->name('loaddanhmuc');
+
+    Route::get('/admin/capnhatdanhmucsanpham/{id}', [DanhMucController::class, 'capnhatdanhmucsanpham'])->name('capnhatdanhmucsanpham');
+    Route::get('/admin/xulycapnhatdanhmucsanpham', [DanhMucController::class, 'xulycapnhatdanhmucsanpham'])->name('xulycapnhatdanhmucsanpham');
+
+    Route::get('/admin/themsanpham', [SanPhamController::class, 'themsanpham'])->name('themsanpham');
+
+    Route::get('/admin/xulythemdanhmucsanpham', [DanhMucController::class, 'xulythemdanhmuc'])->name('xulythemdanhmucsanpham');
+
+    Route::get('/admin/themdanhmucsanpham', [DanhMucController::class, 'themdanhmucsanpham'])->name('themdanhmucsanpham');
+
+    Route::post('/admin/xulythemsanpham', [SanPhamController::class, 'xulythemsanpham'])->name('xulythemsanpham');
+    Route::post('/admin/xulycapnhatsanpham', [SanPhamController::class, 'xulycapnhatsanpham'])->name('xulycapnhatsanpham');
+
+
+    Route::get('/admin/capnhatsanpham/{id}', [SanPhamController::class, 'capnhatsanpham'])->name('capnhatsanpham');
+    Route::get('/admin/danhsachkhachhang', function () {
+        return view('admin/danhsachkhachhang');
+    });
+
+    Route::get('/admin/thongtincanhan', function () {
+        return view('admin/thongtincanhan');
+    });
+    Route::get('/admin/capnhatdonhang', function () {
+        return view('/admin/capnhatdonhang');
+    });
+    // đơn hàng
+    Route::get('/admin/donhang', [DonhangController::class, 'donhang'])->name('donhang');
+    Route::get('/admin/capnhatdonhang/{id}', [DonhangController::class, 'capnhatdonhang'])->name('capnhatdonhang');
+    Route::post('/admin/xulycapnhatdonhang', [DonhangController::class, 'xulycapnhatdonhang'])->name('xulycapnhatdonhang');
+});
