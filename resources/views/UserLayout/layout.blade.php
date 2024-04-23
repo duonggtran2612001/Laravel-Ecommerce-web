@@ -192,6 +192,78 @@
 
             </div>
 
+            
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto"> 
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0"> 
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 13]) }}">Máy Tính</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 14]) }}">Điện Thoại</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 15]) }}">Sam Sung</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 16]) }}">LapTop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 17]) }}">Iphone</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 18]) }}">Oppo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 19]) }}">Máy Tính Bảng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 20]) }}">Phụ kiện điện thoại</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 21]) }}">Tai Nghe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 22]) }}">Acer</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 23]) }}">AirPort</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 24]) }}">LapTop Gaming</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 25]) }}">Dell</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 26]) }}">Thiết bị mạng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 27]) }}">Cáp Sạc</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 28]) }}">Phụ Kiện Gaming</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 29]) }}">Ốp Lưng</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 30]) }}">Loa</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('sanphamtheodanhmuc', ['id' => 31]) }}">Sạc Dự Phòng</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+            
             <div id="menu_replace">
 
                 <div class="menu">
