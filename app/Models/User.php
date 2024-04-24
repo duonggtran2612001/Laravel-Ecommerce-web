@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
+
 
 class User extends Authenticatable
 {
@@ -67,5 +69,24 @@ class User extends Authenticatable
         $user->address = $data['address'];
         $user->fullname = $data['fullname'];
         return $user->save();
+    }
+
+    public function get_user()
+    {
+        return $dsuser = DB::table('users')->join('trangthainguoidung', 'trangthainguoidung.id', '=', 'users.trangthai')->select("*", 'users.id as idd')->get();
+    }
+
+    public function get_user_by_id($id)
+    {
+        return $user = DB::table('users')->join('trangthainguoidung', 'trangthainguoidung.id', '=', 'users.trangthai')->where('users.id', '=', $id)->select("*", 'users.id as idd')->get();
+    }
+
+    public function update_user($data)
+    {
+        $db = DB::table('users')->where('id', $data['id'])->update(['fullname' => $data['fullname'], 'address' => $data['address'], 'trangthai' => $data['trangthai'],]);
+        if ($db) {
+            return redirect()->route('danhsachkhachhang')->with('success', 'Đã cập nhật danh mục thành công');
+        }
+        return redirect()->route('capnhatkhachhang', ['id' => $data['id']])->with('error', 'thêm thất bại');
     }
 }

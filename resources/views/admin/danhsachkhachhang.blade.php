@@ -51,87 +51,40 @@
                             <th scope="col">Username</th>
                             <th scope="col">Email</th>
                             <th scope="col">Trạng thái</th>
+                            <th scope="col">Phân Loại</th>
                             <th scope="col">Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php $count = 0; ?>
+                        @foreach($dsuser as $user)
                         <tr>
                             <!-- <td>
                                         <input type="checkbox">
                                     </td> -->
-                            <th scope="row">1</th>
-                            <td>Trần Quang Đạo</td>
-                            <td>quangdao2601</td>
-                            <td>tranquangdao2601@gmail.com</td>
-                            <td>Đang hoạt động</td>
+                            <th scope="row">{{$count++}}</th>
+                            <td>{{$user->fullname}}</td>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->tentrangthai}}</td>
+                            <td><?php if ($user->role == 0) {
+                                ?>
+                                    Hệ thống
+                                <?php
+                                } else {
+                                ?>
+                                    End User
+                                <?php
+                                }
+                                ?>
+                            </td>
                             <td>
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="{{route('capnhatkhachhang',['id'=>$user->idd])}}" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
 
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
 
-                        <tr>
-                            <!-- <td>
-                                        <input type="checkbox">
-                                    </td> -->
-                            <th scope="row">1</th>
-                            <td>Trần Quang Đạo</td>
-                            <td>quangdao2601</td>
-                            <td>tranquangdao2601@gmail.com</td>
-                            <td>Đang hoạt động</td>
-                            <td>
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <td>
-                                        <input type="checkbox">
-                                    </td> -->
-                            <th scope="row">1</th>
-                            <td>Trần Quang Đạo</td>
-                            <td>quangdao2601</td>
-                            <td>tranquangdao2601@gmail.com</td>
-                            <td>Đang hoạt động</td>
-                            <td>
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <td>
-                                        <input type="checkbox">
-                                    </td> -->
-                            <th scope="row">1</th>
-                            <td>Trần Quang Đạo</td>
-                            <td>quangdao2601</td>
-                            <td>tranquangdao2601@gmail.com</td>
-                            <td>Đang hoạt động</td>
-                            <td>
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <!-- <td>
-                                        <input type="checkbox">
-                                    </td> -->
-                            <th scope="row">1</th>
-                            <td>Trần Quang Đạo</td>
-                            <td>quangdao2601</td>
-                            <td>tranquangdao2601@gmail.com</td>
-                            <td>Đang hoạt động</td>
-                            <td>
-                                <a href="" class="btn btn-success btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-
-                                <a href="" class="btn btn-danger btn-sm rounded-0 text-white" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></a>
-                            </td>
-                        </tr>
-
+                        @endforeach
                     </tbody>
                 </table>
                 <nav aria-label="Page navigation example">

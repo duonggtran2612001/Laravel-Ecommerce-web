@@ -8,6 +8,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\TrangChuController;
+use App\Http\Controllers\UserController;
 use App\Models\trangthaisanpham;
 
 /*
@@ -84,9 +85,13 @@ Route::middleware('checklogin')->group(function () {
 
 
     Route::get('/admin/capnhatsanpham/{id}', [SanPhamController::class, 'capnhatsanpham'])->name('capnhatsanpham');
-    Route::get('/admin/danhsachkhachhang', function () {
-        return view('admin/danhsachkhachhang');
-    });
+    Route::get('/admin/danhsachkhachhang', [UserController::class, 'danhsachkhachhang'])->name('danhsachkhachhang');
+
+    Route::get('/admin/danhsachkhachhang/{id}', [UserController::class, 'capnhatkhachhang'])->name('capnhatkhachhang');
+
+    Route::post('/admin/xulycapnhatkhachhang', [UserController::class, 'xulycapnhatkhachhang'])->name('xulycapnhatkhachhang');
+
+
 
     Route::get('/admin/thongtincanhan', function () {
         return view('admin/thongtincanhan');
