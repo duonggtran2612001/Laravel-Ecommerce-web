@@ -23,7 +23,7 @@
                                 <small class='form-text text-danger'>{{$message}}</small>
                                 @enderror
                             </div>
-                            <button type="submit" name="btn-add-category" class="btn btn-primary">Thêm danhh mục</button>
+                            <button type="submit" name="btn-add-category" class="btn btn-primary">Thêm danh mục</button>
                         </form>
                     </div>
                 </div>

@@ -50,7 +50,6 @@ Route::get('/admin/themsanpham', function () {
 });
 
 Route::get('/admin/danhmucsanpham',[DanhMucController::class, 'loaddanhmuc'])->name('loaddanhmuc');
-
 Route::get('/admin/capnhatdanhmucsanpham/{id}',[DanhMucController::class, 'capnhatdanhmucsanpham'])->name('capnhatdanhmucsanpham');
 Route::get('/admin/xulycapnhatdanhmucsanpham',[DanhMucController::class, 'xulycapnhatdanhmucsanpham'])->name('xulycapnhatdanhmucsanpham');
 
